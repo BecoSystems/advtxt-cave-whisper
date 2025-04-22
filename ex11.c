@@ -1,6 +1,6 @@
 /*******************************************************************************************
  *                                                                                         *
- * Aluno: Jamerson David A. Queiroz                                                        *
+ * Alunos: Jamerson David A. Queiroz / Pedro Victor B. A. Souza                            *
  * Turma: Programa1                                                                        *
  *                                                                                         *
  *                                 Atividade ex11.c                                        *
