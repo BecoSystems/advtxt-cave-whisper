@@ -6,4 +6,120 @@ Turma: Programa1
 
 */
 
+algoritmo "aventura"
+inicio
+    inteiro escolha
+
+    escreva("===Bem vindo ao jogo Adventure Text (Cave Whisper)===\n")
+    escreva("pressione qualquer tecla para iniciar")
+    leia(escolha)
+
+    escreva("=Você está numa estrada escura no meio da floresta. No meio da neblina, você avista uma entrada de uma caverna, no qual você podia ouvir alguns sussuros vindos de dentro da caverna=\n")
+    escreva("==Você encontra um baú, decide abrir?==\n\n")
+
+    escreva(">1-Sim<\n")
+    escreva(">2-Não<\n\n")
+    escreva("Sua escolha: ")
+    leia(escolha)
+
+    enquanto (escolha != 1 e escolha != 2) faça
+        escreva("Escolha uma resposta valida!!!\n")
+        escreva("Sua escolha: ")
+        leia(escolha)
+    fimEnquanto
+
+    se (escolha == 1) então
+        escreva("=Você escolheu abrir o baú e se deparou com três objetos: uma Tocha, um Espelho e um Livro antigo=\n")
+        escreva("Você decide escolher um dos três objetos para continuar seu caminho\n\n")
+
+        escreva(">1-Tocha<\n")
+        escreva(">2-Espelho<\n")
+        escreva(">3-Livro Antigo<\n\n")
+        escreva("Sua escolha: ")
+        leia(escolha)
+
+        enquanto (escolha != 1 e escolha != 2 e escolha != 3) faça
+            escreva("Escolha uma resposta valida!!!\n")
+            escreva("Sua escolha: ")
+            leia(escolha)
+        fimEnquanto
+
+        se (escolha == 1) então
+            escreva("==Você pega a Tocha, agora precisa decidir o que irá fazer==\n\n")
+            escreva(">1-Entrar na Caverna<\n")
+            escreva(">2-Esperar na frente da Caverna<\n")
+            escreva(">3-Fugir para longe<\n\n")
+            escreva("Sua escolha: ")
+            leia(escolha)
+
+            enquanto (escolha != 1 e escolha != 2 e escolha != 3) faça
+                escreva("Escolha uma resposta válida!!!\n")
+                escreva("Sua escolha: ")
+                leia(escolha)
+            fimEnquanto
+
+            se (escolha == 1) então
+                escreva("A luz da tocha revela armadilhas escondidas. Você pisa em uma placa de pressão, dardos envenenados te acertam, Você morre!!\n FIM DE JOGO!!")
+            senao se (escolha == 2) então
+                escreva("A chama atrai uma criatura da caverna. Você só percebe quando ela já está atrás de você, Você morre!! \n FIM DE JOGO!!")
+            senao
+                escreva("Você corre com a tocha acesa. Embora o medo te empurre para longe, você escapa com vida, mas algo te observa do escuro.\n Você sobreviveu \n FIM DE JOGO, GANHOU!!")
+            fimSe
+            retorne
+        fimSe
+
+        se (escolha == 2) então
+            escreva("==Você pega o Espelho, agora precisa decidir o que irá fazer==\n")
+            escreva(">1-Entrar na Caverna<\n")
+            escreva(">2-Esperar na frente da Caverna<\n")
+            escreva(">3-Fugir para longe<\n\n")
+            escreva("Sua escolha: ")
+            leia(escolha)
+
+            enquanto (escolha != 1 e escolha != 2 e escolha != 3) faça
+                escreva("Escolha uma resposta válida!!!\n")
+                escreva("Sua escolha: ")
+                leia(escolha)
+            fimEnquanto
+
+            se (escolha == 1) então
+                escreva("O espelho reflete uma versão distorcida da caverna. Você segue por onde o reflexo indica... e desaparece, engolido por uma ilusão. Você morre!!\n FIM DE JOGO!!")
+            senao se (escolha == 2) então
+                escreva("Você vê no reflexo uma sombra se aproximando. Quando se vira, já é tarde. Tudo fica escuro. Você morre!! \n FIM DE JOGO!!")
+            senao
+                escreva("Você foge e o espelho quebra sozinho em sua mochila. Um alívio estranho te invade, como se tivesse escapado de algo ruim.\n Você sobreviveu!!! \n FIM DE JOGO, GANHOU!!")
+            fimSe
+            retorne
+        fimSe
+
+        se (escolha == 3) então
+            escreva("==Você pega o Livro Antigo, agora precisa decidir o que irá fazer==\n")
+            escreva(">1-Entrar na Caverna<\n")
+            escreva(">2-Esperar na frente da Caverna<\n")
+            escreva(">3-Fugir para longe<\n\n")
+            escreva("Sua escolha: ")
+            leia(escolha)
+
+            enquanto (escolha != 1 e escolha != 2 e escolha != 3) faça
+                escreva("Escolha uma resposta válida!!!\n")
+                escreva("Sua escolha: ")
+                leia(escolha)
+            fimEnquanto
+
+            se (escolha == 1) então
+                escreva("Você lê um feitiço em voz alta. A caverna responde, abrindo o caminho. A aventura só está começando.\n FIM DE JOGO!!\n Você Sobreviveu!!!")
+            senao se (escolha == 2) então
+                escreva("O livro começa a flutuar, páginas virando sozinhas. Um portal se abre, chamando por você. Talvez uma oportunidade... ou um risco.\n FIM DE JOGO!!\n Você Sobreviveu!!!")
+            senao
+                escreva("O livro emite um brilho fraco. Ao fugir, você percebe que algo foi deixado para trás, mas vive para descobrir outro dia.\n Você sobreviveu\n FIM DE JOGO, GANHOU!!")
+            fimSe
+            retorne
+        fimSe
+    fimSe
+
+    se (escolha == 2) então
+        escreva("Você não pega nenhum item e um raio cai na sua cabeça. Você morre :D")
+    fimSe
+
+fimalgoritmo
 
