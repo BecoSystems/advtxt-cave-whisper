@@ -6,120 +6,120 @@ Turma: Programa1
 
 */
 
-algoritmo "aventura"
-inicio
-    inteiro escolha
+algoritmo adventureText;
 
-    escreva("===Bem vindo ao jogo Adventure Text (Cave Whisper)===\n")
-    escreva("pressione qualquer tecla para iniciar")
-    leia(escolha)
+variáveis
+    escolha : inteiro;
+fim-variáveis
 
-    escreva("=Você está numa estrada escura no meio da floresta. No meio da neblina, você avista uma entrada de uma caverna, no qual você podia ouvir alguns sussuros vindos de dentro da caverna=\n")
-    escreva("==Você encontra um baú, decide abrir?==\n\n")
+início
+    imprima("===Bem vindo ao jogo Adventure Text (Cave Whisper)===\n");
 
-    escreva(">1-Sim<\n")
-    escreva(">2-Não<\n\n")
-    escreva("Sua escolha: ")
-    leia(escolha)
+    imprima("Pressione ENTER para iniciar\n");
+    leia();
 
-    enquanto (escolha != 1 e escolha != 2) faça
-        escreva("Escolha uma resposta valida!!!\n")
-        escreva("Sua escolha: ")
-        leia(escolha)
-    fimEnquanto
+    imprima("Você está numa estrada escura no meio da floresta. ");
+    imprima("No meio da neblina, você avista uma entrada de uma caverna, de onde vêm sussurros...\n");
+    imprima("Você encontra um baú. Decide abrir?\n");
 
-    se (escolha == 1) então
-        escreva("=Você escolheu abrir o baú e se deparou com três objetos: uma Tocha, um Espelho e um Livro antigo=\n")
-        escreva("Você decide escolher um dos três objetos para continuar seu caminho\n\n")
+    imprima(">1-Sim<\n");
+    imprima(">2-Não<\n");
+    imprima("Sua escolha: ");
+    escolha := leia();
 
-        escreva(">1-Tocha<\n")
-        escreva(">2-Espelho<\n")
-        escreva(">3-Livro Antigo<\n\n")
-        escreva("Sua escolha: ")
-        leia(escolha)
+    enquanto escolha <> 1 e escolha <> 2 faça
+        imprima("Escolha uma resposta válida!!!\n");
+        imprima("Sua escolha: ");
+        escolha := leia();
+    fim-enquanto
 
-        enquanto (escolha != 1 e escolha != 2 e escolha != 3) faça
-            escreva("Escolha uma resposta valida!!!\n")
-            escreva("Sua escolha: ")
-            leia(escolha)
-        fimEnquanto
+    se escolha = 1 então
+        imprima("Você escolheu abrir o baú. Há três objetos: uma Tocha, um Espelho e um Livro antigo.\n");
+        imprima("Você decide escolher um deles para continuar seu caminho.\n");
 
-        se (escolha == 1) então
-            escreva("==Você pega a Tocha, agora precisa decidir o que irá fazer==\n\n")
-            escreva(">1-Entrar na Caverna<\n")
-            escreva(">2-Esperar na frente da Caverna<\n")
-            escreva(">3-Fugir para longe<\n\n")
-            escreva("Sua escolha: ")
-            leia(escolha)
+        imprima(">1-Tocha<\n");
+        imprima(">2-Espelho<\n");
+        imprima(">3-Livro Antigo<\n");
+        imprima("Sua escolha: ");
+        escolha := leia();
 
-            enquanto (escolha != 1 e escolha != 2 e escolha != 3) faça
-                escreva("Escolha uma resposta válida!!!\n")
-                escreva("Sua escolha: ")
-                leia(escolha)
-            fimEnquanto
+        enquanto escolha <> 1 e escolha <> 2 e escolha <> 3 faça
+            imprima("Escolha uma resposta válida!!!\n");
+            imprima("Sua escolha: ");
+            escolha := leia();
+        fim-enquanto
 
-            se (escolha == 1) então
-                escreva("A luz da tocha revela armadilhas escondidas. Você pisa em uma placa de pressão, dardos envenenados te acertam, Você morre!!\n FIM DE JOGO!!")
-            senao se (escolha == 2) então
-                escreva("A chama atrai uma criatura da caverna. Você só percebe quando ela já está atrás de você, Você morre!! \n FIM DE JOGO!!")
-            senao
-                escreva("Você corre com a tocha acesa. Embora o medo te empurre para longe, você escapa com vida, mas algo te observa do escuro.\n Você sobreviveu \n FIM DE JOGO, GANHOU!!")
-            fimSe
-            retorne
-        fimSe
+        se escolha = 1 então
+            imprima("Você pega a Tocha. O que deseja fazer?\n");
+            imprima(">1-Entrar na Caverna<\n");
+            imprima(">2-Esperar na frente da Caverna<\n");
+            imprima(">3-Fugir para longe<\n");
+            escolha := leia();
 
-        se (escolha == 2) então
-            escreva("==Você pega o Espelho, agora precisa decidir o que irá fazer==\n")
-            escreva(">1-Entrar na Caverna<\n")
-            escreva(">2-Esperar na frente da Caverna<\n")
-            escreva(">3-Fugir para longe<\n\n")
-            escreva("Sua escolha: ")
-            leia(escolha)
+            enquanto escolha < 1 ou escolha > 3 faça
+                imprima("Escolha uma resposta válida!!!\n");
+                escolha := leia();
+            fim-enquanto
 
-            enquanto (escolha != 1 e escolha != 2 e escolha != 3) faça
-                escreva("Escolha uma resposta válida!!!\n")
-                escreva("Sua escolha: ")
-                leia(escolha)
-            fimEnquanto
+            se escolha = 1 então
+                imprima("Você entra na caverna com a tocha. Pisa em uma armadilha e morre!\nFIM DE JOGO!!\n");
+            senão
+                se escolha = 2 então
+                    imprima("A chama atrai uma criatura. Ela te pega de surpresa. Você morre!!\nFIM DE JOGO!!\n");
+                senão
+                    imprima("Você foge com a tocha e sobrevive. Mas algo te observa no escuro...\nFIM DE JOGO, GANHOU!!\n");
+                fim-se
+            fim-se
+        senão
+            se escolha = 2 então
+                imprima("Você pega o Espelho. O que deseja fazer?\n");
+                imprima(">1-Entrar na Caverna<\n");
+                imprima(">2-Esperar na frente da Caverna<\n");
+                imprima(">3-Fugir para longe<\n");
+                escolha := leia();
 
-            se (escolha == 1) então
-                escreva("O espelho reflete uma versão distorcida da caverna. Você segue por onde o reflexo indica... e desaparece, engolido por uma ilusão. Você morre!!\n FIM DE JOGO!!")
-            senao se (escolha == 2) então
-                escreva("Você vê no reflexo uma sombra se aproximando. Quando se vira, já é tarde. Tudo fica escuro. Você morre!! \n FIM DE JOGO!!")
-            senao
-                escreva("Você foge e o espelho quebra sozinho em sua mochila. Um alívio estranho te invade, como se tivesse escapado de algo ruim.\n Você sobreviveu!!! \n FIM DE JOGO, GANHOU!!")
-            fimSe
-            retorne
-        fimSe
+                enquanto escolha < 1 ou escolha > 3 faça
+                    imprima("Escolha uma resposta válida!!!\n");
+                    escolha := leia();
+                fim-enquanto
 
-        se (escolha == 3) então
-            escreva("==Você pega o Livro Antigo, agora precisa decidir o que irá fazer==\n")
-            escreva(">1-Entrar na Caverna<\n")
-            escreva(">2-Esperar na frente da Caverna<\n")
-            escreva(">3-Fugir para longe<\n\n")
-            escreva("Sua escolha: ")
-            leia(escolha)
+                se escolha = 1 então
+                    imprima("O espelho distorce sua visão e te engole em uma ilusão. Você morre!!\nFIM DE JOGO!!\n");
+                senão
+                    se escolha = 2 então
+                        imprima("Você vê uma sombra se aproximando pelo reflexo. Tarde demais. Você morre!!\nFIM DE JOGO!!\n");
+                    senão
+                        imprima("Você foge e o espelho quebra sozinho. Um alívio estranho te invade...\nFIM DE JOGO, GANHOU!!\n");
+                    fim-se
+                fim-se
+            senão
+                se escolha = 3 então
+                    imprima("Você pega o Livro Antigo. O que deseja fazer?\n");
+                    imprima(">1-Entrar na Caverna<\n");
+                    imprima(">2-Esperar na frente da Caverna<\n");
+                    imprima(">3-Fugir para longe<\n");
+                    escolha := leia();
 
-            enquanto (escolha != 1 e escolha != 2 e escolha != 3) faça
-                escreva("Escolha uma resposta válida!!!\n")
-                escreva("Sua escolha: ")
-                leia(escolha)
-            fimEnquanto
+                    enquanto escolha < 1 ou escolha > 3 faça
+                        imprima("Escolha uma resposta válida!!!\n");
+                        escolha := leia();
+                    fim-enquanto
 
-            se (escolha == 1) então
-                escreva("Você lê um feitiço em voz alta. A caverna responde, abrindo o caminho. A aventura só está começando.\n FIM DE JOGO!!\n Você Sobreviveu!!!")
-            senao se (escolha == 2) então
-                escreva("O livro começa a flutuar, páginas virando sozinhas. Um portal se abre, chamando por você. Talvez uma oportunidade... ou um risco.\n FIM DE JOGO!!\n Você Sobreviveu!!!")
-            senao
-                escreva("O livro emite um brilho fraco. Ao fugir, você percebe que algo foi deixado para trás, mas vive para descobrir outro dia.\n Você sobreviveu\n FIM DE JOGO, GANHOU!!")
-            fimSe
-            retorne
-        fimSe
-    fimSe
+                    se escolha = 1 então
+                        imprima("Você lê um feitiço e a caverna se abre. A aventura está só começando!\nFIM DE JOGO!!\nVocê Sobreviveu!!!\n");
+                    senão
+                        se escolha = 2 então
+                            imprima("O livro flutua e abre um portal misterioso. O que será que há além?\nFIM DE JOGO!!\nVocê Sobreviveu!!!\n");
+                        senão
+                            imprima("O livro brilha levemente. Você foge, mas algo ficou para trás.\nFIM DE JOGO, GANHOU!!\n");
+                        fim-se
+                    fim-se
+                fim-se
+            fim-se
+        fim-se
+    senão
+        imprima("Você decide não abrir o baú. Um raio cai em sua cabeça.\nVocê morre :D\n");
+    fim-se
 
-    se (escolha == 2) então
-        escreva("Você não pega nenhum item e um raio cai na sua cabeça. Você morre :D")
-    fimSe
-
-fimalgoritmo
+fim
 
