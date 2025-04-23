@@ -15,7 +15,7 @@ fim-variáveis
 início
     imprima("===Bem vindo ao jogo Adventure Text (Cave Whisper)===\n");
 
-    imprima("Pressione ENTER para iniciar\n");
+    imprima("Envie qualquer valor para iniciar:\n");
     leia();
 
     imprima("Você está numa estrada escura no meio da floresta. ");
