@@ -1,0 +1,221 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Criação de Fluxograma usando LaTeX
+%
+% Assunto: Fluxograma do jogo "Cave Whisper" - Jogo de aventura em texto
+%          com múltiplas escolhas e finais diferentes
+%
+% Autores:
+%     Pedro Victor B. A. Souza
+%     Jamerson David A. Queiroz
+%
+% Coordenação:
+%     Prof. Dr. Ruben Carlo Benante
+%
+% Data: 2024-04-25
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Para gerar o PDF use o comando make com o makefile configurado:
+%
+%    $ make ex11-programa1-benante-souza-queiroz.pdf
+%
+% O conteúdo do makefile é composto dos 3 seguintes comandos que ficam assim automatizados:
+%    $ pdflatex ex11-fluxograma.tex -o ex11-fluxograma.pdf
+%    $ bibtex biblio
+%    $ pdflatex ex11-fluxograma.tex -o ex11-fluxograma.pdf
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% preambulo %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\documentclass[a4paper,12pt]{article} %twocolumn
+\usepackage[left=2.5cm,right=2cm,top=2.5cm,bottom=2cm]{geometry}
+\usepackage[utf8]{inputenc} % letras acentuadas
+\usepackage[portuguese]{babel} % tradução de títulos
+\usepackage[colorlinks]{hyperref}
+\usepackage{tikz} % para adicionar fluxogramas
+\usepackage{algorithm} % ambiente para índice de algoritmos
+\usepackage{algpseudocode} % fonte e estilo do algoritmo
+\usepackage{graphicx} % permite adicionar imagens
+\usepackage{indentfirst} % indenta o primeiro parágrafo também
+\usepackage{url} % permite adicionar links de URLs e emails
+
+\DeclareUrlCommand\email{\urlstyle{mm}} % comando para email bonito
+\floatname{algorithm}{Algoritmo} % tradução da palavra algoritimo no ambiente de índice
+
+\usetikzlibrary{shapes.geometric, shapes.symbols,arrows} % ajuste do tikz para incluir formas e setas
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% capa %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\title{Fluxograma: ex11 - Cave Whisper}
+\author{Pedro Victor B. A. Souza \\ Jamerson David A. Queiroz}
+
+\begin{document}
+
+\maketitle
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% definicao dos blocos do fluxograma (tikz) %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\tikzstyle{line} = [draw, -latex']
+\tikzstyle{startend} = [draw, ellipse,fill=red!20, minimum height=2em, node distance=1.55cm]
+\tikzstyle{print} = [tape, fill=blue!20, draw, draw=black, minimum width=3cm, minimum height=1.4cm, text width=4.5em, text centered, tape bend top=none, tape bend height=0.2cm, node distance=1.55cm]
+\tikzstyle{input} = [trapezium, trapezium left angle=60, trapezium right angle=90, minimum width=3cm, minimum height=1cm, text centered, draw=black, fill=blue!30, node distance=1.95cm]
+\tikzstyle{process} = [rectangle, minimum width=3cm, minimum height=1cm, text centered, draw=black, fill=orange!30, node distance=1.55cm]
+\tikzstyle{decision} = [diamond, minimum width=3cm, minimum height=1cm, text centered, draw=black, fill=green!30, node distance=2.25cm]
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% resumo %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{abstract}
+
+\textbf{Assunto:} Fluxograma do jogo "Cave Whisper"
+
+Jogo de aventura em texto com múltiplas escolhas onde o jogador encontra uma caverna misteriosa e deve tomar decisões que levam a diferentes finais. O jogo apresenta três objetos principais (tocha, espelho e livro antigo) e múltiplos caminhos possíveis.
+
+Após a modelagem do fluxograma e desenvolvimento da lógica de programação em algoritmo, o programa será implementado na Linguagem de Programação \texttt{C}.
+
+\textbf{Local:} Escola Politécnica de Pernambuco - UPE/POLI
+
+\textbf{Órgão Financiador:} N/A
+
+\textbf{Caracterização:} Modelagem, Projeto e Implementação de Software em Linguagem \texttt{C}
+
+\end{abstract}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% artigo %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% seção de introdução %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Introdução}
+
+O jogo "Cave Whisper" é uma aventura interativa em texto onde o jogador se encontra em uma floresta escura e descobre uma caverna misteriosa. O jogo apresenta múltiplas escolhas que levam a diferentes finais, alguns positivos e outros negativos.
+
+O programa foi modelado em \textit{fluxograma} para representar visualmente todas as possíveis decisões e seus resultados. Em seguida, a lógica foi desenvolvida em formato de \textit{algoritmo} e finalmente implementada em Linguagem de Programação \texttt{C}.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% seção de objetivos %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Fluxograma}
+
+\begin{tikzpicture}[node distance=1.5cm]
+    % Nodos principais
+    \node (inicio) [startend] {Início};
+    \node (intro) [print, below of=inicio] {Bem-vindo ao Cave Whisper};
+    \node (cenario) [print, below of=intro] {Você está numa floresta escura e avista uma caverna};
+    \node (bau) [decision, below of=cenario] {Abrir o baú?};
+    
+    % Ramificação não abre baú
+    \node (naoabre) [print, right of=bau, xshift=3cm] {Não abre};
+    \node (fim1) [startend, below of=naoabre] {Fim: Você morre};
+    
+    % Ramificação abre baú
+    \node (abre) [print, below of=bau] {Abre o baú};
+    \node (objetos) [decision, below of=abre] {Escolher objeto};
+    
+    % Objetos
+    \node (tocha) [print, left of=objetos, xshift=-3cm, yshift=-1cm] {Tocha};
+    \node (espelho) [print, below of=objetos] {Espelho};
+    \node (livro) [print, right of=objetos, xshift=3cm, yshift=-1cm] {Livro};
+    
+    % Ações para cada objeto
+    \node (acao_tocha) [decision, below of=tocha] {Ação};
+    \node (acao_espelho) [decision, below of=espelho] {Ação};
+    \node (acao_livro) [decision, below of=livro] {Ação};
+    
+    % Finais
+    \node (fim_tocha1) [startend, left of=acao_tocha, xshift=-2cm] {Morre};
+    \node (fim_tocha2) [startend, below of=acao_tocha] {Morre};
+    \node (fim_tocha3) [startend, right of=acao_tocha, xshift=2cm] {Sobrevive};
+    
+    \node (fim_espelho1) [startend, left of=acao_espelho, xshift=-2cm] {Morre};
+    \node (fim_espelho2) [startend, below of=acao_espelho] {Morre};
+    \node (fim_espelho3) [startend, right of=acao_espelho, xshift=2cm] {Sobrevive};
+    
+    \node (fim_livro1) [startend, left of=acao_livro, xshift=-2cm] {Sobrevive};
+    \node (fim_livro2) [startend, below of=acao_livro] {Sobrevive};
+    \node (fim_livro3) [startend, right of=acao_livro, xshift=2cm] {Sobrevive};
+    
+    % Conexões
+    \path [line] (inicio) -- (intro);
+    \path [line] (intro) -- (cenario);
+    \path [line] (cenario) -- (bau);
+    
+    % Ramificação principal
+    \path [line] (bau) -- node[above] {Não} (naoabre);
+    \path [line] (naoabre) -- (fim1);
+    \path [line] (bau) -- node[right] {Sim} (abre);
+    \path [line] (abre) -- (objetos);
+    
+    % Objetos
+    \path [line] (objetos) -| node[above] {Tocha} (tocha);
+    \path [line] (objetos) -- node[right] {Espelho} (espelho);
+    \path [line] (objetos) -| node[above] {Livro} (livro);
+    
+    % Ações tocha
+    \path [line] (tocha) -- (acao_tocha);
+    \path [line] (acao_tocha) -- node[above] {Entrar} (fim_tocha1);
+    \path [line] (acao_tocha) -- node[right] {Esperar} (fim_tocha2);
+    \path [line] (acao_tocha) -- node[above] {Fugir} (fim_tocha3);
+    
+    % Ações espelho
+    \path [line] (espelho) -- (acao_espelho);
+    \path [line] (acao_espelho) -- node[above] {Entrar} (fim_espelho1);
+    \path [line] (acao_espelho) -- node[right] {Esperar} (fim_espelho2);
+    \path [line] (acao_espelho) -- node[above] {Fugir} (fim_espelho3);
+    
+    % Ações livro
+    \path [line] (livro) -- (acao_livro);
+    \path [line] (acao_livro) -- node[above] {Entrar} (fim_livro1);
+    \path [line] (acao_livro) -- node[right] {Esperar} (fim_livro2);
+    \path [line] (acao_livro) -- node[above] {Fugir} (fim_livro3);
+\end{tikzpicture}
+
+\clearpage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Autores %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section*{Detalhamento dos Autores}
+
+\subsection*{Discentes}
+
+\begin{enumerate}
+    \item \textbf{Nome Completo:} Pedro Victor B. A. Souza
+    \begin{description}
+        \item [Email:] \email{pvbas@poli.br}
+        \item [Endereço:]
+        \item [Matrícula:]
+        \item [CPF:]
+        \item [RG:]
+        \item [Telefone:]
+        \item [Currículo Lattes:]
+    \end{description}
+
+    \item \textbf{Nome Completo:} Jamerson David A. Queiroz
+    \begin{description}
+        \item [Email:] \email{jdaq@poli.br}
+        \item [Endereço:]
+        \item [Matrícula:]
+        \item [CPF:]
+        \item [RG:]
+        \item [Telefone:]
+        \item [Currículo Lattes:]
+    \end{description}
+\end{enumerate}
+
+\subsection*{Docentes}
+
+\begin{enumerate}
+    \item \textbf{Nome Completo:} Ruben Carlo Benante
+    \begin{description}
+        \item [Email:] \email{rcb@upe.br}
+        \item [Matrícula:] 11238-0
+        \item [Currículo Lattes:] \url{http://lattes.cnpq.br/3366717378277623}
+    \end{description}
+\end{enumerate}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% referências bibliográficas %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\nocite{*}
+\bibliographystyle{acm}
+\bibliography{biblio}
+
+\end{document}
